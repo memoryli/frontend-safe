@@ -68,3 +68,24 @@ CSP(Content Security Policy) 即内容安全策略，主要目标是减少、并
 7、 nginx代理<br>
 8、 nodejs中间件代理<br><br>
 9、 WebSocket协议<br>
+# 前端性能优化
+1、有一种优化交preload<br>
+时候为了提高网页初始加载的性能，我们会选择延迟一部分资源的加载和执行。<br>
+preload是一个预加载关键字。它显式地向浏览器声明一个需要提前加载的资源。使用方式如下：<br>
+
+在<head>中写入<link rel="preload" href="some-resource-url" as="xx">（包括用JS创建<link>元素并插入到<head>）<br>
+
+在HTTP头部加上Link: <some-resource-url>; rel=preload; as=xx<br>
+
+当浏览器“看”到这样的声明后，就会以一定的优先级在后台加载资源。加载完的资源放在HTTP缓存中。而等到要真正执行时，再按照正常方式用标签或者代码加载，即可从HTTP缓存取出资源。<br>
+
+使用Preload加载资源的方式有以下几个特点：<br>
+
+提前加载资源<br>
+
+资源的加载和执行分离<br>
+
+不延迟网页的load事件（除非Preload资源刚好是阻塞 window 加载的资源）<br>
+
+### XSS防范
+### XSS防范
